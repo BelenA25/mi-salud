@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { KeyboardAvoidingView, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { colors } from '../constants/colors';
 
 type Message = {
@@ -18,11 +18,21 @@ export default function ChatSheet({ visible, onClose }: Props) {
     { from: 'bot', text: 'Hola Taigo, vi que tu puntaje bajó 28% la semana pasada.' },
     { from: 'bot', text: '¿Dormiste menos o cambió algo en tu rutina?' },
   ]);
+  const [text, setText] = useState('');
+
+  function sendMessage() {
+    if (text.trim() === '') return;
+    setMessages([
+      ...messages,
+      { from: 'me', text: text.trim() },
+      { from: 'bot', text: 'Gracias por contarme, lo tendré en cuenta.' },
+    ]);
+    setText('');
+  }
 
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
-      <View style={styles.overlay}>
-        <Pressable style={styles.backdrop} onPress={onClose} />
+      <KeyboardAvoidingView style={styles.overlay} behavior="padding">        <Pressable style={styles.backdrop} onPress={onClose} />
         <View style={styles.sheet}>
           <View style={styles.header}>
             <Text style={styles.title}>Asistente Intelly</Text>
@@ -46,8 +56,20 @@ export default function ChatSheet({ visible, onClose }: Props) {
               </View>
             ))}
           </ScrollView>
+          <View style={styles.inputRow}>
+            <TextInput
+              style={styles.input}
+              placeholder="Escribe un mensaje"
+              placeholderTextColor={colors.textMuted}
+              value={text}
+              onChangeText={setText}
+            />
+            <Pressable style={styles.sendButton} onPress={sendMessage}>
+              <Ionicons name="send" size={18} color="#FFFFFF" />
+            </Pressable>
+          </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </Modal>
   );
 }
@@ -85,4 +107,22 @@ const styles = StyleSheet.create({
   },
   botText: { fontSize: 14, color: colors.text },
   myText: { fontSize: 14, color: '#FFFFFF' },
+  inputRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  input: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 22,
+    paddingHorizontal: 16,
+    height: 44,
+    fontSize: 15,
+    color: colors.text,
+  },
+  sendButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: colors.dark,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
