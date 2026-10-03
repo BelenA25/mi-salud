@@ -26,5 +26,11 @@ export default function Index() {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  content: { flex: 1, paddingHorizontal: 20, paddingTop: 8, gap: 14 },
-});
+  content: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 8,
+    paddingBottom: 44,
+    gap: 14,
+    justifyContent: 'space-between',
+  },});

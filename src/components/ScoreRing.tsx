@@ -2,15 +2,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors } from '../constants/colors';
-
 export default function ScoreRing() {
   return (
     <View style={styles.ring}>
+        <View style={styles.shield}>
+        <MaterialCommunityIcons name="shield-check-outline" size={22} color={colors.text} style={styles.shieldIcon} />
+      </View>
       <View style={styles.kidney}>
         <MaterialCommunityIcons name="water-outline" size={20} color={colors.text} />
-      </View>
-      <View style={styles.shield}>
-        <MaterialCommunityIcons name="shield-check-outline" size={22} color={colors.text} style={styles.shieldIcon} />
       </View>
       <View style={styles.stomach}>
         <MaterialCommunityIcons name="stomach" size={22} color={colors.text} style={styles.stomachIcon} />
@@ -30,7 +29,6 @@ export default function ScoreRing() {
       <View style={styles.bone}>
         <MaterialCommunityIcons name="bone" size={20} color={colors.text} />
       </View>
-
       <View style={styles.center}>
         <Text style={styles.score}>8.8</Text>
         <View style={styles.labelRow}>
@@ -43,22 +41,15 @@ export default function ScoreRing() {
 }
 
 const styles = StyleSheet.create({
-  ring: { width: 280, height: 280, alignSelf: 'center' },
+    ring: {
+        width: 280,
+        height: 280,
+        alignSelf: 'center',
+      },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   score: { fontSize: 72, fontWeight: 'bold', color: colors.text },
   labelRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   label: { fontSize: 13, color: colors.textMuted },
-  kidney: {
-    position: 'absolute',
-    left: 105,
-    top: 13,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: colors.pink,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   shield: {
     position: 'absolute',
     left: 147,
@@ -72,6 +63,17 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '32deg' }],
   },
   shieldIcon: { transform: [{ rotate: '-32deg' }] },
+  kidney: {
+    position: 'absolute',
+    left: 105,
+    top: 13,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.pink,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   stomach: {
     position: 'absolute',
     left: 213,

@@ -10,7 +10,7 @@ export default function TabBar() {
       <View style={styles.addButton}>
         <Ionicons name="add" size={30} color={colors.dark} />
       </View>
-      <Ionicons name="chatbox-ellipses-outline" size={22} color="#FFFFFF" />
+            <Ionicons name="chatbox-ellipses-outline" size={22} color="#FFFFFF" />
       <Ionicons name="person-outline" size={22} color="#FFFFFF" />
     </View>
   );

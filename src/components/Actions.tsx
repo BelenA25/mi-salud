@@ -2,7 +2,6 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors } from '../constants/colors';
-
 export default function Actions() {
   return (
     <View style={styles.row}>

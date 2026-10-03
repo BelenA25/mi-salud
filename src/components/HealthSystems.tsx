@@ -13,7 +13,6 @@ export default function HealthSystems() {
           <Ionicons name="chevron-down" size={14} color="#FFFFFF" />
         </View>
       </View>
-
       <View style={styles.item}>
         <View style={styles.icon}>
           <MaterialCommunityIcons name="dna" size={20} color={colors.text} />
